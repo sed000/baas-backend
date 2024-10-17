@@ -22,11 +22,6 @@ public class BaaSController {
     @Autowired
     private BaaSRepo baaSRepo;
 
-    @GetMapping
-    public List<BaaS> findAll(){
-        return baaSRepo.findAll();
-    }
-
     @GetMapping("/{userId}")
     public List<BaaS> findByUserid(@PathVariable String userId){
         return baaSRepo.findByUserId(userId);
@@ -54,7 +49,7 @@ public class BaaSController {
         if (updatedBaaS.isPresent()) {
             return ResponseEntity.ok(updatedBaaS.get());
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("BaaS entry not found or user ID does not match.");
+            return null;
         }
     }
 
